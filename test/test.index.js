@@ -18,7 +18,7 @@
 const fs = import('fs');
 const { expect } = import('chai');
 
-describe('[Parser tests] ', () => {
+describe('[ tests] ', () => {
   
   before(() => {
     // fs.writeFileSync('.env', envFile);
