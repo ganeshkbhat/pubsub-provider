@@ -145,8 +145,17 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
   this.addSubscriber = addSubscriber;
   this.add = addSubscriber;
 
+  function offSubscriber(eventName, subscriberName) {
+    return true;
+  }
+
+  function onceSubscriber(eventName, subscriberName) {
+    return true;
+  }
+
   function removeSubscriber(eventName, subscriberName) {
     if (!!events[eventName][subscriberName]) {
+      // manager[eventName]
       delete events[eventName][subscriberName];
     } else {
       let s = Object.keys(events[eventName]).filter((v) => {
