@@ -58,39 +58,57 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
     }
 
     // Get all publishers
-    let eKeys = Object.keys(manager[eventName]);
-    let eLen = eKeys.length;
-
-    for (let i = 0; i < eLen; i++) {
+    Object.keys(manager[eventName]).forEach((v, i) => {
       // Get all events
-      let pKeys = Object.keys(events[eventName]);
-      let pLen = pKeys.length;
+      Object.keys(events[eventName]).forEach((ev, ei) => {
+        // Add listeners for all
+        manager[eventName][v].on(eventName, events[eventName][ev]);
+      })
+    })
 
-      // Get all events for specific events
-      let seKeys = pKeys.filter((v) => { return !!v.includes(eKeys[i] + ":") });
-      let seLen = seKeys.length;
-
-      // Add listeners for all
-      manager[eventName][eKeys[i]].on(eventName, events[eventName][pKeys[i]]);
-      for (let k = 0; k < seLen; k++) {
-        manager[eventName][eKeys[i]].on(eventName, events[eventName][seKeys[k]]);
+    Object.keys(events).filter((v, i) => {
+      if (!!v.includes(eventName + ":" + publisherName + ":")) {
+        events[v].on(eventName, events[v]);
       }
-    }
+    })
+
+    // // Get all publishers
+    // let eKeys = Object.keys(manager[eventName]);
+    // let eLen = eKeys.length;
+    // for (let i = 0; i < eLen; i++) {
+    //   // Get all events
+    //   let pKeys = Object.keys(events[eventName]);
+    //   let pLen = pKeys.length;
+    //   // Get all events for specific events
+    //   let seKeys = Object.keys(events[eventName]).filter((v) => { return !!v.includes(eKeys[i] + ":") });
+    //   let seLen = seKeys.length;
+    //   // Add listeners for all
+    //   manager[eventName][eKeys[i]].on(eventName, events[eventName][pKeys[i]]);
+    //   for (let k = 0; k < seLen; k++) {
+    //     manager[eventName][eKeys[i]].on(eventName, events[eventName][seKeys[k]]);
+    //   }
+    // }
   }
 
   function init(opts) {
     if (opts.type === "single") {
-      let k = Object.keys(events);
-      let kLen = k.length;
-      for (let i = 0; i < kLen; i++) {
-        initSubscribersSinglePublisher(events[k[i]]);
-      }
+      Object.keys(events).forEach((v, i) => {
+        initSubscribersSinglePublisher(events[v]);
+      });
+      // let k = Object.keys(events);
+      // let kLen = k.length;
+      // for (let i = 0; i < kLen; i++) {
+      //   initSubscribersSinglePublisher(events[k[i]]);
+      // }
     } else {
-      let k = Object.keys(events);
-      let kLen = k.length;
-      for (let i = 0; i < kLen; i++) {
-        initSubscribersMultiplePublishers(events[k[i]]);
-      }
+      Object.keys(events).forEach((v, i) => {
+        initSubscribersMultiplePublishers(events[v]);
+      })
+      // let k = Object.keys(events);
+      // let kLen = k.length;
+      // for (let i = 0; i < kLen; i++) {
+      //   initSubscribersMultiplePublishers(events[k[i]]);
+      // }
     }
   }
   init(options);
