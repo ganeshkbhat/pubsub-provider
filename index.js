@@ -35,7 +35,10 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
   // structure { "eventName" : { subscriberName: function } }
   let events = {
     "pubsubmanager": {
-      "subscriberName": () => { }
+      "subscriberName": () => { },
+      // below applicable for multiple publisher types
+      "pubsubmanager:publisherName:subscriberName": () => { },
+      "pubsubmanager:default:subscriberName": () => { }
     }
   };
 
