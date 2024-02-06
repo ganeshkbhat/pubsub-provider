@@ -227,4 +227,33 @@ describe('[pubsub tests] Tests for multiple publishers', () => {
     expect(actual).to.deep.equal(expected);
   });
 
+  it('should run and get Publisher', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+
+  it('should run and get Publishers', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and get Subscriber', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and get Subscribers', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and get Event Contexts', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
 });

@@ -91,29 +91,30 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
   init(options);
 
   function getPublisher(eventName, publisherName) {
-
+    return (!!publisherName) ? manager[eventName][publisherName] : manager[eventName]["default"];
   }
   this.getPublisher = getPublisher;
 
-  function getPublishers(eventName, publisherName) {
-
+  function getPublishers(eventName) {
+    return (!!manager.eventName) ? manager[eventName] : false;
   }
   this.getPublishers = getPublishers;
 
   function getSubscriber(eventName, subscriberName) {
-
+    return (!!subscriberName) ? events[eventName][subscriberName] : false;
   }
   this.getSubscriber = getSubscriber;
 
-  function getSubscribers(eventName, subscriberName) {
-
+  function getSubscribers(eventName) {
+    return events[eventName];
   }
   this.getSubscribers = getSubscribers;
 
-  function getEvent(eventName) {
-
+  function getEventContext(eventName, context = "publishers") {
+    return (context === "publishers") ? getPublisher(eventName) : getSubscribers(eventName);
   }
   this.getEvent = getEvent;
+  this.getEventContext = getEventContext;
 
   function addPublisher(eventName, publisherName, defaultPublisher = false) {
     if (!manager[eventName]) {
