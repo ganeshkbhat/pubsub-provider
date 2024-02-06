@@ -149,6 +149,41 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
   this.removeSubscriber = removeSubscriber;
   this.remove = remove;
 
+  function addEvent(eventName, publishers = [] /* ["publisherName", ...] */) {
+    let kLen = publishers.length;
+    manager[eventName] = { 'default': new EventEmitter() }
+    events[eventName] = {}
+    if (!!kLen) {
+      publishers.forEach((v) => {
+        manager[eventName][v] = new EventEmitter();
+      });
+    }
+  }
+  this.addEvent = addEvent;
+
+  function removeEvent(eventName, removeSubscribers = true) {
+    try {
+      delete manager[eventName]
+      if (!!removeSubscribers) {
+        delete events[eventName]
+      }
+      return true;
+    } catch (e) {
+      return e;
+    }
+  }
+  this.removeEvent = removeEvent;
+
+  function offEvent(eventName) {
+    try {
+      
+      return true;
+    } catch (e) {
+      return e;
+    }
+  }
+  this.offEvent = offEvent;
+
 }
 
 module.exports = PubSubManager;
