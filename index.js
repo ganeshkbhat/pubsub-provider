@@ -120,7 +120,6 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
     manager.on(eventName, events[evt][subscriberName]);
   }
   this.addSubscriber = addSubscriber;
-  this.add = addSubscriber;
 
   function offSubscriber(eventName, subscriberName) {
     return true;
@@ -147,7 +146,6 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
     return true;
   }
   this.removeSubscriber = removeSubscriber;
-  this.remove = remove;
 
   function addEvent(eventName, publishers = [] /* ["publisherName", ...] */) {
     let kLen = publishers.length;
