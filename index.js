@@ -90,6 +90,31 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
   }
   init(options);
 
+  function getPublisher(eventName, publisherName) {
+
+  }
+  this.getPublisher = getPublisher;
+
+  function getPublishers(eventName, publisherName) {
+
+  }
+  this.getPublishers = getPublishers;
+
+  function getSubscriber(eventName, subscriberName) {
+
+  }
+  this.getSubscriber = getSubscriber;
+
+  function getSubscribers(eventName, subscriberName) {
+
+  }
+  this.getSubscribers = getSubscribers;
+
+  function getEvent(eventName) {
+
+  }
+  this.getEvent = getEvent;
+
   function addPublisher(eventName, publisherName, defaultPublisher = false) {
     if (!manager[eventName]) {
       manager[eventName] = {
@@ -106,6 +131,7 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
 
   function removePublisher(eventName, publisherName) {
     delete manager[eventName][publisherName];
+    // return the removed publisher here
   }
   this.removePublisher = removePublisher;
 
@@ -174,7 +200,7 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
 
   function offEvent(eventName) {
     try {
-      
+
       return true;
     } catch (e) {
       return e;
