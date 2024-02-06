@@ -191,4 +191,40 @@ describe('[pubsub tests] Tests for multiple publishers', () => {
     expect(actual).to.deep.equal(expected);
   });
 
+  it('should run and add new event for publishers single emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and add new event for publishers multiple emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+
+  it('should run and remove new event for publishers single emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and remove new event for publishers multiple emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+
+  it('should run and off event for publishers single emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+  
+  it('should run and off event for publishers multiple emitter', () => {
+    const expected = 0; // predefined
+    const actual = 0; // do ops
+    expect(actual).to.deep.equal(expected);
+  });
+
 });
