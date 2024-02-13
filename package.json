@@ -4,8 +4,7 @@
   "description": "simple pubsub-provider module for publish and subscriber pattern",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec --recursive --timeout 60000",
-    "prepack": "clean-pkg-json"
+    "test": "mocha --reporter spec --recursive --timeout 60000"
   },
   "keywords": [
     "publish subscriber pattern",

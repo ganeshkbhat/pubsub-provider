@@ -15,78 +15,6 @@
 
 'use strict';
 
-const { EventEmitter } = require("node:events");
-
-function InterfacePubSubManager(options) {
-  // structure { "eventName" : { publisherName: EventEmitter } }
-  let manager = (options.type === "single") ? new EventEmitter() : {};
-
-  // structure { "eventName" : { subscriberName: function } }
-  let events = {
-    "pubsubmanager": {
-      "subscriberName": () => { },
-      // below applicable for multiple publisher types
-      "pubsubmanager:publisherName:subscriberName": () => { },
-      "pubsubmanager:default:subscriberName": () => { }
-    }
-  };
-
-  init(options);
-
-  this.getPublisher = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.getPublishers = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.getSubscriber = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.getSubscribers = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.getEvent = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.getEventContext = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.addPublisher = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.removePublisher = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.addSubscriber = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.removeSubscriber = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.addEvent = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.removeEvent = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-  this.offEvent = () => {
-    throw new Error("[Function] Not yet implemented");
-  };
-
-}
-
 /**
  *
  *
@@ -99,10 +27,8 @@ function InterfacePubSubManager(options) {
  * 
  */
 function PubSubManager(options = { type: "single" /* "multiple" */ }) {
-  InterfacePubSubManager.call(this, options);
-
   // structure { "eventName" : { publisherName: EventEmitter } }
-  let manager = (options.type === "single") ? new EventEmitter() : {};
+  let manager = (options.type === "single") ? new CustomEvent("events") : {};
 
   // structure { "eventName" : { subscriberName: function } }
   let events = {
@@ -283,4 +209,3 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
 
 }
 
-module.exports = PubSubManager;
