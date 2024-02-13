@@ -283,4 +283,14 @@ function PubSubManager(options = { type: "single" /* "multiple" */ }) {
 
 }
 
-module.exports = PubSubManager;
+function TryObservable(options) {
+  PubSubManager.call(this, options);
+}
+
+module.exports.PubSubManager = PubSubManager;
+module.exports.TryObservable = TryObservable;
+
+module.exports.default = {
+  PubSubManager,
+  TryObservable
+}
